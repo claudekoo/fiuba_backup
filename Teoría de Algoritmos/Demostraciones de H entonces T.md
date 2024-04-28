@@ -20,12 +20,12 @@ Como $2k^2 + 2k$ es un número entero, $n^2$ es un número entero impar.
 
 Demostramos que si la tesis es falsa, entonces la hipótesis también lo es; dado que, la negación de la tesis es verdadera si y solo si la negación de la hipótesis es verdadera.
 
-**Ejemplo:** Demostrar que si $a*b$ es un número par, $a$ o $b$ o ambos son pares.
+**Ejemplo:** Demostrar que si $a\cdot b$ es un número par, $a$ o $b$ o ambos son pares.
 
 **Demostración:** Supongamos que $a$ y $b$ son números enteros impares.  
 Entonces, $a = 2k + 1 y b = 2k' + 1$ para algunos números enteros $k$ y $k'$.  
-Por lo tanto, $a*b = (2k + 1)(2k' + 1) = 4kk' + 2k + 2k' + 1 = 2(2kk' + k + k') + 1$.  
-Como $2kk' + k + k'$ es un número entero, $a*b$ es un número impar.
+Por lo tanto, $a\cdot b = (2k + 1)(2k' + 1) = 4kk' + 2k + 2k' + 1 = 2(2kk' + k + k') + 1$.  
+Como $2kk' + k + k'$ es un número entero, $a\cdot b$ es un número impar.
 
 ## Por el absurdo/contradicción <a name="absurdo/contradicción"></a>
 
@@ -37,7 +37,7 @@ Asumimos que la hipótesis es verdadera y la tesis es falsa, y llegamos a una co
 Entonces, $a = m/n$ y $b = p/q$ para algunos enteros $m$, $n$, $p$ y $q$.  
 Por lo tanto, $a/b = m/n / p/q = mq/np$.  
 Como a/b = $\sqrt{2}, mq/np = \sqrt{2}$.  
-Por lo tanto, $mq = np * \sqrt{2}$.  
+Por lo tanto, $mq = np \cdot \sqrt{2}$.  
 Como mq y np son enteros, $\sqrt{2}$ es racional: lo cual es contradictorio.
 
 ## Inducción <a name="inducción"></a>
@@ -49,7 +49,7 @@ Dado $P(n)$, donde n es un número natural o cero, se demuestran lo siguiente:
 
 **Ejemplo 1:** Demostrar que $\sum_{i=1}^{n} 2i = n(n+1)$ para todo número natural $n$.
 
-**Demostración:** Para $n = 1$, $2*1 = 1(1+1)$.  
+**Demostración:** Para $n = 1$, $2\cdot 1 = 1(1+1)$.  
 Supongamos que la fórmula es verdadera para $n = k$.  
 Entonces, $\sum_{i=1}^{k} 2i = k(k+1)$.  
 Para $n = k+1$:  
@@ -63,5 +63,5 @@ Por lo tanto, la fórmula es verdadera para todo número natural $n$.
 Supongamos que la fórmula es verdadera para $n = k$.  
 Entonces, $8^h-5^h = 3k$ para algún número entero $k$.  
 Para $n = h+1$:  
-$8^{h+1}-5^{h+1} = 8*8^h-5*5^h = 8(8^h-5^h) + 3*5^h = 8(3k) + 3*5^h = 3(8k + 5^h)$.  
+$8^{h+1}-5^{h+1} = 8\cdot 8^h-5\cdot 5^h = 8(8^h-5^h) + 3\cdot 5^h = 8(3k) + 3\cdot 5^h = 3(8k + 5^h)$.  
 Por lo tanto, $8^{h+1}-5^{h+1}$ es divisible por 3.
