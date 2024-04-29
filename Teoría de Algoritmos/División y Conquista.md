@@ -58,7 +58,7 @@ B: proporcion del tamaño original con el que llamamos recursivamente
 O(n^C): costo de partir y juntar (todo lo que no son llamados recursivos)
 
 Si $log_B A < C$ entonces $T(n) = O(n^C)$  
-Si $log_B A = C$ entonces $T(n) = O(n^C log\:n)$  
+Si $log_B A = C$ entonces $T(n) = O(n^C log\ n)$  
 Si $log_B A > C$ entonces $T(n) = O(n^{log_B A})$  
 
 ### Condiciones para aplicar el teorema
@@ -75,7 +75,7 @@ donde A = 2, B = 2, C = 1
 
 $log_2 2 = 1 < 1$
 
-Entonces $T(n) = O(n^C log\:n) = O(n\:log\:n)$
+Entonces $T(n) = O(n^C log\ n) = O(n\ log\ n)$
 
 ### Teorema Maestro general
 
@@ -85,14 +85,14 @@ A y B lo mismo que antes, y $f(n)$ es el costo de partir y juntar los resultados
 
 $f(n) = O(n^C)$, $C < log_B A$ entonces $T(n) = ϴ(n^{log_B A})$  
 $f(n) = ϴ(n^Clog^k n)$, $C = log_B A$ entonces $T(n) = ϴ(n^C log^{k+1} n)$  
-$f(n) = Ω(n^C)$, $C > log_B A$, $Af(n/B)\leq kf(n)(con k < 1, n\:grande)$ entonces $T(n) = ϴ(f(n))$
+$f(n) = Ω(n^C)$, $C > log_B A$, $Af(n/B)\leq kf(n)(con k < 1, n\ grande)$ entonces $T(n) = ϴ(f(n))$
 
 Nota: ϴ es una notación que indica que la función está acotada por una constante multiplicativa. Es decir, la función es igual a otra multiplicada por una constante.  
 Nota: Ω es una notación que indica que la función acota a otra por una constante multiplicativa. Es decir, la función es mayor a otra multiplicada por una constante.
 
 #### Ejemplo
 
-$T(n) = 2T(n/2) + log\:n$
+$T(n) = 2T(n/2) + log\ n$
 
 $log_B A = 1$
 
@@ -173,7 +173,7 @@ La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y v
 
 T(n) = 2T(n/2) + O(1) = O(log n)
 
-### Búsqueda de puntos cercanos en un plano
+### Puntos cercanos en un plano
 
 Dado n puntos en un plano, buscar la pareja que se encuentre más cercana.
 
@@ -189,7 +189,7 @@ Podemos usar nociones de MergeSort, dividiendo el plano en 2 partes.
 
 ![distancia_minima_1.png](imagenes/distancia_minima_1.png)
 
-Vamos a buscar la pareja más cercana del lado izquierdo, luego otra del lago derecho, y luego en tiempo lineal buscar los más cercanos; resultando en $O(n \: log \:n)$.
+Vamos a buscar la pareja más cercana del lado izquierdo, luego otra del lago derecho, y luego en tiempo lineal buscar los más cercanos; resultando en $O(n \  log \ n)$.
 
 Primero ordenamos los vértices respecto al eje x, y agarramos el punto del medio(respecto al eje x); lo usamos para dividir el plano en 2 partes, cuyos sets de puntos los llamaremos Q y R respectivamente.
 
@@ -223,7 +223,7 @@ Si hacemos esto recorriendo en el orden de $S_y$, tenemos que comparar a lo sumo
 
 En el peor escenario tenemos 15 comparaciones por cada punto, y por lo tanto combinar el resultado es O(n).
 
-```pseudo
+```python
 def puntos_cercanos(P):
     construir Px y Py // O(n log n)
     (p0, p1) = puntos_cercanos_rec(Px, Py)
@@ -247,10 +247,10 @@ def puntos_cercanos_rec(Px, Py):
 
         Por cada punto s de Sy:
             Computar distancia con próximos 15 puntos de Sy
-            sea s, s' el par de puntos más cercanos
+            sea s, s_prima el par de puntos más cercanos
         
-        Si distancia(s, s') < delta:
-            retornar (s, s')
+        Si distancia(s, s_prima) < delta:
+            retornar (s, s_prima)
         Si distancia(q0, q1) < distancia(r0, r1):
             retornar (q0, q1)
         Sino:
@@ -321,5 +321,5 @@ La forma sencilla sería por fuerza bruta resultando en O(n^2).
 
 Pensemos en MergeSort: agarra dos mitades y al unirlos, los va intercalando según corresponde. En esa etapa de merge, podemos ir contando cuántas veces se tuvo que intercalar, lo que equivaldría a la cantidad de inversiones.
 
-$T(n) = O(n \: log \: n)$ como bien sabemos.
+$T(n) = O(n \ log \ n)$ como bien sabemos.
 
