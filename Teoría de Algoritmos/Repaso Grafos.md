@@ -32,7 +32,7 @@ Tipos de Grafos (relaciones):
 - Con bucles o sin bucles
 - Simples o compuestos
 
-## [Formas de recorrer un grafo](#formas-de-recorrer-un-grafo)
+## Formas de recorrer un grafo
 
 - BFS (Breadth First Search): Recorre por niveles
 - DFS (Depth First Search): Recorre por profundidad
@@ -62,7 +62,7 @@ Se puede obtener con algoritmo de Kahn:
 5. El proceso se repite hasta que todos los vértices hayan sido incluidos en la secuencia topológica o hasta que no queden vértices sin procesar.
 
 
-## [Grafos bipartitos](#grafos-bipartitos)
+## Grafos bipartitos
 
 ![Grafo_bipartito.png](imagenes/grafo_bipartito.png)
 
@@ -70,7 +70,7 @@ Grafos cuyos nodos se pueden dividir en dos conjuntos disjuntos, de tal forma qu
 
 Nota: se llama grafo $K_(m,n)$ a un grafo bipartito completo con m nodos en un conjunto y n nodos en el otro. Es decir, un grafo bipartito en el que todos los nodos de un conjunto están conectados con todos los nodos del otro conjunto.
 
-## [Puntos de articulación](#puntos-de-articulación)
+## Puntos de articulación
 
 Nodo cuya eliminación aumenta el número de componentes conexas del grafo.
 
@@ -81,31 +81,31 @@ Se puede obtener con algoritmo de Tarjan:
     a. Es la raíz del árbol DFS y tiene al menos dos hijos en el árbol DFS.  
     b. No es la raíz del árbol DFS, pero tiene un hijo v tal que no hay ninguna arista de vuelta desde ningún descendiente de v o de v a algún ancestro de v, cuyo tiempo de descubrimiento sea menor o igual al tiempo de finalización de v.
 
-## [Distancia](#distancia)
+## Distancia
 
 El algoritmo más rápido para obtener la distancia entre dos nodos para las siguientes condiciones:
 - Grafo sin pesos : BFS
 - Grafo con pesos positivos : Dijkstra
 - Grafo con pesos negativos : Bellman-Ford
 
-## [Árbol de tendido mínimo](#árbol-de-tendido-mínimo)
+## Árbol de tendido mínimo
 
 Árbol obtenido de un grafo no dirigido y conexo, que tiene la menor suma de pesos de las aristas.
 
 Se puede obtener con algoritmo de Kruskal o Prim.
 
-## [Representación de grafos](#representación-de-grafos)
+## Representación de grafos
 
 - **Matriz de adyacencia**: Matriz cuadrada de tamaño $n \times n$ donde $n$ es el número de nodos. Si hay una arista entre los nodos $i$ y $j$, la matriz tendrá un 1 en la posición $(i,j)$.
 - **Listas de adyacencia(con diccionarios)**: Diccionario donde cada nodo tiene un diccionario con los nodos a los que está conectado y el peso de la arista. El de mejor complejidad teórica.
 
-### [Propiedades matemáticas de la matriz de adyacencia](#propiedades-matemáticas-de-la-matriz-de-adyacencia)
+### Propiedades matemáticas de la matriz de adyacencia
 
 - Es cuadrada (VxV).
 - Si el grafo es no dirigido, es simétrica.
 - Si no hay bucles, la diagonal principal es 0.
 
-### [Momento teorema - Potenciación de la M.A.](#momento-teorema---potenciación-de-la-m.a.)
+### Momento teorema - Potenciación de la M.A.
 
 Siendo A la matriz de adyacencia de un grafo G, la matriz $A^n_{ij}$ contiene la cantidad de caminos de longitud n entre los vértices i y j.
 
@@ -118,15 +118,15 @@ Entonces, la cantidad de caminos de largo n+1 de i a j es la suma de la cantidad
 Por lo tanto, $F^{n+1}_{ij} = \sum_{v} A_{kj}F^n_{ik} = \sum_{v} A_{kj}A^n_{ik} = A^{n+1}_ij$.  
 La última igualdad es por la definición de la multiplicación de matrices. Es redundante demostrarlo, créanme.
 
-### [Propiedad de los Autovectores y Autovalores](#propiedad-de-los-autovectores-y-autovalores)
+### Propiedad de los Autovectores y Autovalores
 
 Los autovectores y autovalores de la matriz de adyacencia nos permiten obtener:
 - Una medida de cecntralidad de los nodos
 - Una forma de clusterizar (comunidades)
 
-## [Definición formal de Árbol](#definición-formal-de-árbol)
+## Definición formal de Árbol
 
-Un árbol es un grafo no dirigido tal que:  
+Un **árbol** es un grafo no dirigido tal que:  
 Para todo v,w en V, hay un único camino entre v y w.
 
 Esto implica las siguientes 3 propiedades:
@@ -134,7 +134,7 @@ Esto implica las siguientes 3 propiedades:
 - El árbol es acíclico: si hubiera ciclo, habría más de un camino entre v y w.
 - El árbol tiene n-1 aristas: partiendo de que esto cumple para n=1, si consideramos un árbol con n+1 nodos, al eliminar una hoja en ello, se obtiene un árbol con n nodos y n-1 aristas.
 
-### [Teorema](#teorema)
+### Teorema
 
 Todo árbol de al menos dos vércices tiene al menos 2 vértices de grado 1.
 
@@ -143,7 +143,7 @@ Todo árbol de al menos dos vércices tiene al menos 2 vértices de grado 1.
 Hacemos un recorrido DFS desde esa única hoja, que necesariamente termina en un vértice de grado 1.  
 Caso contrario, ese vértice final tiene que tener una arista a un vértice ya visitado, es decir, existe más de un camino entre ese par de vértices.
 
-## [Volviendo a las propiedades de árboles](#volviendo-a-las-propiedades-de-árboles)
+## Volviendo a las propiedades de árboles
 
 - El árbol es conexo.
 - El árbol es acíclico.
@@ -179,7 +179,7 @@ $E_{G'} = V_{G'}-1$
 $E_{G} = E_{G'} + t = V_{G'} - 1 + t = V_{G} - 1 + t $ dado que no se eliminaron vértices.
 Por lo tanto, $t = 0$.
 
-## [Handshaking Lemma](#handshaking-lemma)
+## Handshaking Lemma
 
 En todo grafo no dirigido, la cantidad de vértices con un grado impar, es par.
 
@@ -189,57 +189,57 @@ $\sum_{V} grado(v) = \sum_{V_{par}} grado(v) + \sum_{V_{impar}} grado(v) = 2E$
 $\sum_{V_{impar}} grado(v) = 2E - \sum_{V_{par}} grado(v)$, donde 2E es par y la sumatoria de los grados de los vértices pares también, por ser sumatoria de números pares.  
 Número par - número par = número par.
 
-## [Un grafo es bipartito si y solo si no tiene ciclos de longitud impar](#un-grafo-es-bipartito-si-y-solo-si-no-tiene-ciclos-de-longitud-impar)
+## Un grafo es bipartito si y solo si no tiene ciclos de longitud impar
 
 Si es bipartito, no tiene ciclos impares.  
 **Demostración por método directo:**  
 Si el grafo es bipartito, cualquier camino que vaya de una subcomponente otra vez a la misma tiene que ser de longitud par.
 
-Si todos los ciclos son de longitud par, el grafo es bipartito.
+Si todos los ciclos son de longitud par, el grafo es bipartito.  
 **Demostración por método directo:**  
 Teniendo cualquier vértice $v_0$, tomemos la distancia en aristas de $v_0$ a todos los demás vértices. Pintamos todos los vértices a distancia de par de rojo y los de distancia impar de azul. Si hay arista a dos vértices de mismo color, habría un ciclo impar; esto no puede pasar, terminamos separando en 2 subconjuntos y el grafo es bipartito.
 
-## [Cliques](#cliques)
+## Cliques
 
-Un clique es un subgrafo completo (todos los vértices están conectados entre sí).
+Un **clique** es un subgrafo completo (todos los vértices están conectados entre sí).
 
 Un 3-clique es un triángulo, un 4-clique es un cuadrado, etc.
 
-## [Grafos regulares](#grafos-regulares)
+## Grafos regulares
 
-Un grafo d-regular es un grafo en el que todos los vértices tienen grado d. No implica que el grafo sea conexo.
+Un **grafo d-regular** es un grafo en el que todos los vértices tienen grado d. No implica que el grafo sea conexo.
 
 Propiedades de un grafo d-regular:
 1. El vector unitario es autovector de la matriz de adyacencia, cuyo autovalor es d, y es el autovalor más grande (se usa esta noción para clusterizar).
 2. Un grafo completto es un grafo regular.
 3. Teorema Nash-Williams: todo grafo k-regular en un grafo con 2k+1 vértices tiene un ciclo hamiltoniano (camino cerrado que pasa por todos los vértices una vez y solo una vez, terminando en el mismo vértice).
 
-## [Grafos cúbicos](#grafos-cúbicos)
+## Grafos cúbicos
 
-Un grafo cúbico es un grafo 3-regular.
+Un **grafo cúbico** es un grafo 3-regular.
 
 ![Grafo_cubico.png](imagenes/grafo_cubico.png)
 
-## [Grafos Hamiltonianos y Eulerianos](#grafos-hamiltonianos-y-eulerianos)
+## Grafos Hamiltonianos y Eulerianos
 
-Camino de Euler: Un camino que pasa por todas las aristas
+**Camino de Euler:** Un camino que pasa por todas las aristas
 
-Ciclo de Euler: Idem pero termina en el mismo vértice.
+**Ciclo de Euler:** Idem pero termina en el mismo vértice.
 
 Un grafo tiene un ciclo de Euler si y solo si todos los vértices son de grado par.  
 Un grafo tiene camino de Euler si y solo si tiene 0 o 2 vértices de grado impar.
 
-Camino Hamiltoniano: Un camino que pasa por todos los vértices una única vez.
+**Camino Hamiltoniano:** Un camino que pasa por todos los vértices una única vez.
 
-Ciclo Hamiltoniano: Idem pero termina en el mismo vértice.
+**Ciclo Hamiltoniano:** Idem pero termina en el mismo vértice.
 
-## [Isomorfismos en Grafos](#isomorfismos-en-grafos)
+## Isomorfismos en Grafos
 
 ![Isomorfismos.png](imagenes/isomorfismos.png)
 
-Se dicen que dos grafos son isomorfos si podemos renombrar los vértices de uno para que sea igual al otro; es decir, si son el mismo grafo pero con visualización y nombres diferentes.
+Se dicen que dos grafos son **isomorfos** si podemos renombrar los vértices de uno para que sea igual al otro; es decir, si son el mismo grafo pero con visualización y nombres diferentes.
 
-## [Teorema de isomorfismos](#teorema-de-isomorfismos)
+## Teorema de isomorfismos
 
 G y H son dos grafos con matrices de adyacencia A y B, respectivamente.
 
