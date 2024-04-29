@@ -1,6 +1,6 @@
 # Repaso de Grafos
 
-# Índice
+## Índice
 
 - [Formas de recorrer un grafo](#formas-de-recorrer-un-grafo)
 - [Conectividad en grafos](#conectividad-en-grafos)
