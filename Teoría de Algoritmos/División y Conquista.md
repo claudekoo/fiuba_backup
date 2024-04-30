@@ -167,7 +167,7 @@ Tenemos $e_i$ al segmento que va de $v_i$ a $v_{i+1}$, y $e_{v_i} = v_{i+1} - v_
 
 Lo más importante es el "sentido respecto a la proyección" en el eje u que tiene cada vector.
 
-Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto es posible observar en la siguiente imagen si recorren el polígono con i incrementando(sentido antihorario) y observan su proyección.
+Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto lo pueden observar en la siguiente imagen recorriendo los vértices del polígono en sentido antihorario(con i incremental) y observando su proyección sobre la recta u.
 
 ![Extremo_poligono.png](imagenes/extremo_poligono.png)
 
