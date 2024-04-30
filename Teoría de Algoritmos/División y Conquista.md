@@ -167,7 +167,10 @@ Tenemos $e_i$ al segmento que va de $v_i$ a $v_{i+1}$, y $e_{v_i} = v_{i+1} - v_
 
 Lo más importante es el "sentido respecto a la proyección" en el eje u que tiene cada vector.
 
-Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'.
+Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto es posible observar en la siguiente imagen si recorren el polígono con i incrementando(sentido antihorario) y observan su proyección.
+
+![Extremo_poligono.png](imagenes/extremo_poligono.png)
+
 
 La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y vemos si es mayor que el anterior y el siguiente. Si es mayor que ambos, entonces es el máximo. Si no, entonces el máximo está en el lado donde el vértice medio es menor que el anterior.
 
@@ -255,6 +258,8 @@ def puntos_cercanos_rec(Px, Py):
         Sino:
             retornar (r0, r1)
 ```
+
+$T(n) = 2T(n/2) + O(n) = O(n\ log\ n)$
 
 ### Multiplicación de matrices
 
