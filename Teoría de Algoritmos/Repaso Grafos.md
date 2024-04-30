@@ -121,7 +121,7 @@ La última igualdad es por la definición de la multiplicación de matrices. Es 
 ### Propiedad de los Autovectores y Autovalores
 
 Los autovectores y autovalores de la matriz de adyacencia nos permiten obtener:
-- Una medida de cecntralidad de los nodos
+- Una medida de centralidad de los nodos
 - Una forma de clusterizar (comunidades)
 
 ## Definición formal de Árbol
@@ -136,7 +136,7 @@ Esto implica las siguientes 3 propiedades:
 
 ### Teorema
 
-Todo árbol de al menos dos vércices tiene al menos 2 vértices de grado 1.
+Todo árbol de al menos dos vértices tiene al menos 2 vértices de grado 1.
 
 **Demostración por el absurdo:** Supongamos que un árbol tiene menos de 2 vértices de grado 1.  
 ¿Qué pasa si un árbol tiene 0 vértices de grado 1? Es imposible, porque no habría hojas, tendría que tener al menos 1.  
@@ -211,7 +211,7 @@ Un **grafo d-regular** es un grafo en el que todos los vértices tienen grado d.
 
 Propiedades de un grafo d-regular:
 1. El vector unitario es autovector de la matriz de adyacencia, cuyo autovalor es d, y es el autovalor más grande (se usa esta noción para clusterizar).
-2. Un grafo completto es un grafo regular.
+2. Un grafo completo es un grafo regular.
 3. Teorema Nash-Williams: todo grafo k-regular en un grafo con 2k+1 vértices tiene un ciclo hamiltoniano (camino cerrado que pasa por todos los vértices una vez y solo una vez, terminando en el mismo vértice).
 
 ## Grafos cúbicos

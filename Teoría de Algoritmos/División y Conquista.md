@@ -54,7 +54,7 @@ Si tenemos un algoritmo cuya ecuación de recurrencia es:
 $T(n) = AT(n/B) + O(n^C)$
 
 A: cantidad de llamados recursivos  
-B: proporcion del tamaño original con el que llamamos recursivamente
+B: proporción del tamaño original con el que llamamos recursivamente
 O(n^C): costo de partir y juntar (todo lo que no son llamados recursivos)
 
 Si $log_B A < C$ entonces $T(n) = O(n^C)$  
@@ -103,7 +103,7 @@ $log_B A = 1$
 No!  
 1° caso → $f(c) = O(n^{0,1})$ → $C < log_B A$ → $T(n) = ϴ(n)$ 
 
-## Ejericios más avanzados
+## Ejercicios más avanzados
 
 ### Multiplicación de enteros grandes
 
@@ -145,7 +145,7 @@ def multiplicacionBigInt(x, y):
     return x_1y_1 2^n + (p - x_1y_1 - x_0y_0) 2^(n/2) + x_0y_0
 ```
 
-T(n) = 3T(n/2) + O(n) = O(n^log_2 3) = O(n^1.58)
+$T(n) = 3T(n/2) + O(n) = O(n^{log_2 3}) = O(n^1.58)$
 
 ### Obtener extremo de un polígono
 
@@ -171,7 +171,7 @@ Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los 
 
 La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y vemos si es mayor que el anterior y el siguiente. Si es mayor que ambos, entonces es el máximo. Si no, entonces el máximo está en el lado donde el vértice medio es menor que el anterior.
 
-T(n) = 2T(n/2) + O(1) = O(log n)
+$T(n) = 2T(n/2) + O(1) = O(log\ n)$
 
 ### Puntos cercanos en un plano
 
@@ -259,7 +259,7 @@ def puntos_cercanos_rec(Px, Py):
 
 ### Multiplicación de matrices
 
-Un algoritmo sencililo para multiplicar matrices consume O(n^3).
+Un algoritmo sencillo para multiplicar matrices consume O(n^3).
 
 #### Algoritmo por D&C
 
