@@ -55,7 +55,7 @@ $T(n) = AT(n/B) + O(n^C)$
 
 A: cantidad de llamados recursivos  
 B: proporción del tamaño original con el que llamamos recursivamente
-O(n^C): costo de partir y juntar (todo lo que no son llamados recursivos)
+$O(n^C)$: costo de partir y juntar (todo lo que no son llamados recursivos)
 
 Si $log_B A < C$ entonces $T(n) = O(n^C)$  
 Si $log_B A = C$ entonces $T(n) = O(n^C log\ n)$  
@@ -177,7 +177,7 @@ $T(n) = 2T(n/2) + O(1) = O(log\ n)$
 
 Dado n puntos en un plano, buscar la pareja que se encuentre más cercana.
 
-Algoritmo sencillo: comparar todos contra todos, resultando en O(n^2).
+Algoritmo sencillo: comparar todos contra todos, resultando en $O(n^2)$.
 
 #### Algoritmo por D&C
 
@@ -211,15 +211,16 @@ Luego, los ordenamos respecto al eje y.
 
 ![distancia_minima_3.png](imagenes/distancia_minima_3.png)
 
-Estas zonas las dividiremos en celdas de lado = $\delta/2$. Es importante notar que no pueden haber más de un punto en cada celda, ya que si hubiese más de uno, su distancia sería menor a $\delta$.
+Esta zona desde L - $\delta$ y L + $\delta$ las dividiremos en celdas de lado = $\delta/2$. Es importante notar que no pueden haber más de un punto en cada celda, ya que si hubiese más de uno, su distancia sería menor a $\delta$ dentro de un mismo plano Q o R y habrían sido elegidos como de distancia mínima al calcular para cada plano individualmente.
 
-Para saber si existen puntos a distancia menor a $\delta$ de otro en esta zona, debemos determinar para cada punto si existe algún otro punto enceldas cercanas (a no más de $\delta$ de distancia).
+Para saber si existe algún par de puntos a distancia menor a $\delta$ en esta zona, podemos determinar para cada punto si existe algún otro punto en celdas cercanas (a no más de $\delta$ de distancia).
 
 ![distancia_minima_4.png](imagenes/distancia_minima_4.png)
 
-Si hacemos esto recorriendo en el orden de $S_y$, tenemos que comparar a lo sumo con 15 celdas siguientes hacia arriba(como pueden visualizar en la imagen) dado que ya se habrían hecho comparaciones con los puntos que se encuentran abajo. En realidad, podemos hacerlo con 7 celdas ya que no es necesario comparar con las celdas que están a más de $\delta$ de distancia y tampoco con celdas de un mismo plano, pero vamos a obviar esa parte ya que es engorroso y no mejora la complejidad teórica.
+Supongamos que consideramos hasta 3 celdas de distancia para simplificar el problema. Si hacemos un recorrido de los puntos en el orden de $S_y$, tendremos que comparar a lo sumo con 15 celdas siguientes hacia arriba(como pueden visualizar en la imagen) dado que ya se habrían hecho comparaciones con los puntos que se encuentran abajo.  
+Si no simplificaramos y viésemos caso por caso, podemos hacerlo con 7 celdas ya que no es necesario comparar con las celdas que están a más de $\delta$ de distancia y tampoco con celdas de un mismo plano, pero vamos a obviar esa parte ya que es engorroso y no mejora la complejidad teórica.
 
-En el peor escenario tenemos 15 comparaciones por cada punto, y por lo tanto combinar el resultado es O(n).
+En el peor escenario tenemos 15 comparaciones para cada punto en el set entero, por lo tanto combinar el resultado es O(n).
 
 ```python
 def puntos_cercanos(P):
@@ -257,7 +258,7 @@ def puntos_cercanos_rec(Px, Py):
 
 ### Multiplicación de matrices
 
-Un algoritmo sencillo para multiplicar matrices consume O(n^3).
+Un algoritmo sencillo para multiplicar matrices consume $O(n^3)$.
 
 #### Algoritmo por D&C
 
@@ -298,7 +299,7 @@ Aplicaciones:
 3. Procesamiento de imágenes (Redes Neuronales de Convolución)
 4. Machine Learning sobre grafos (Redes Convolucionales de grafos)
 
-La solución trivial resulta en O(n^2) pero podemos hacerlo en O(n log n) usando D&C.
+La solución trivial resulta en $O(n^2)$ pero podemos hacerlo en $O(n\ log\ n)$ usando D&C.
 
 En este archivo se saltea su solución por su complejidad matemática más allá de la técnica D&C, pero si desea más información, se encuentra detallado en el siguiente video: [Fast Fourier Transform - Ing. Víctor Daniel Podberezki](https://youtu.be/fMfTSsntMls?si=o0Es31_Dk2u3KnQk).
 
@@ -313,7 +314,7 @@ Nombramos los elementos en A con 1,2,3,...,n, y B como correspondiente a eso.
 Dos elementos están invertidos si $b_i > b_j$ con $i < j$.  
 La idea es contar cuántas inversiones hay en B respecto a A.
 
-La forma sencilla sería por fuerza bruta resultando en O(n^2).
+La forma sencilla sería por fuerza bruta resultando en $O(n^2)$.
 
 #### Algoritmo por D&C
 
