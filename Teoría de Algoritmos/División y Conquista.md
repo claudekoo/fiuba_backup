@@ -168,7 +168,7 @@ Esta propiedad se da debido a que el polígono es convexo, y el 'sentido' respec
 
 ![Extremo_poligono_2.png](imagenes/extremo_poligono_2.png)
 
-La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y vemos si es mayor que el anterior y el siguiente. Si es mayor que ambos, entonces es el máximo. Si no, entonces el máximo está en el lado donde el vértice medio es menor que el anterior.
+La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y vemos si es mayor que el anterior y el siguiente. Si es mayor que ambos, entonces es el máximo. Si no, entonces el máximo está en el lado donde el vértice medio es menor que el contiguo.
 
 $T(n) = 2T(n/2) + O(1) = O(log\ n)$
 
