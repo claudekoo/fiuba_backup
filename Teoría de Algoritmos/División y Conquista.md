@@ -153,7 +153,7 @@ Tenemos n vértices $V = (V_0, V_1, ..., V_{n-1})$, dispuestos en sentido antiho
 
 Problema: Obtener el vértice extremo (ej. el máximo) respecto a un eje (u).
 
-![Pentagono.png](imagenes/pentagono.png)
+![Extremo_poligono_1.png](imagenes/extremo_poligono_1.png)
 
 La solución a este problema nos sirve para teoría de juegos, representaciones de imágenes, para algoritmos geométricos, etc.
 
@@ -163,14 +163,10 @@ La solución obvia es hacerlo por fuerza bruta, recorriendo todos los vértices 
 
 Si sabemos que el polígono es convexo, es decir, todos sus ángulos interiores son menores a 180°, podemos hacerlo por D&C.
 
-Tenemos $e_i$ al segmento que va de $v_i$ a $v_{i+1}$, y $e_{v_i} = v_{i+1} - v_i$.
+Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto lo pueden observar en la siguiente imagen recorriendo los vértices del polígono en sentido antihorario(con i incremental) y observando su proyección sobre la recta u.  
+Esta propiedad se da debido a que el polígono es convexo, y el 'sentido' respecto el eje u sólo cambia cuando se llega a un vértice extremo.
 
-Lo más importante es el "sentido respecto a la proyección" en el eje u que tiene cada vector.
-
-Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto lo pueden observar en la siguiente imagen recorriendo los vértices del polígono en sentido antihorario(con i incremental) y observando su proyección sobre la recta u.
-
-![Extremo_poligono.png](imagenes/extremo_poligono.png)
-
+![Extremo_poligono_2.png](imagenes/extremo_poligono_2.png)
 
 La propuesta es buscarlo por búsqueda binaria: agarramos el vértice medio, y vemos si es mayor que el anterior y el siguiente. Si es mayor que ambos, entonces es el máximo. Si no, entonces el máximo está en el lado donde el vértice medio es menor que el anterior.
 
