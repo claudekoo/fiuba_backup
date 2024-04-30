@@ -6,7 +6,7 @@
 - [Repaso de D&C y TM](#repaso-de-d&c-y-tm)
 - [Ejercicios más avanzados](#ejercicios-más-avanzados)	
   - [Multiplicación de enteros grandes](#multiplicación-de-enteros-grandes)
-  - [Obtener extremo de un polígono](#multiplicación-de-matrices)
+  - [Obtener extremo de un polígono](#obtener-extremo-de-un-polígono)
   - [Puntos cercanos en un plano](#puntos-cercanos-en-un-plano)
   - [Multiplicación de matrices](#multiplicación-de-matrices)
   - [FFT](#fft)
@@ -189,8 +189,6 @@ Podemos usar nociones de MergeSort, dividiendo el plano en 2 partes.
 
 ![distancia_minima_1.png](imagenes/distancia_minima_1.png)
 
-Vamos a buscar la pareja más cercana del lado izquierdo, luego otra del lago derecho, y luego en tiempo lineal buscar los más cercanos; resultando en $O(n \  log \ n)$.
-
 Primero ordenamos los vértices respecto al eje x, y agarramos el punto del medio(respecto al eje x); lo usamos para dividir el plano en 2 partes, cuyos sets de puntos los llamaremos Q y R respectivamente.
 
 Para Q, calcularemos $Q_x$ y $Q_y$.  
@@ -198,17 +196,17 @@ Para R, calcularemos $R_x$ y $R_y$.
 Cada punto q en Q, almacenaremos en qué posición está en $Q_x$ y $Q_y$.  
 Cada punto r en R, almacenaremos en qué posición está en $R_x$ y $R_y$.
 
-Esto lo hacemos recursivamente, teniendo como caso base 2 o 3 puntos donde podemos calcular fácilmente la distancia mínima.
+Esto lo hacemos recursivamente, teniendo como caso base plano con 2 o 3 puntos donde podemos calcular fácilmente la distancia mínima. A la hora de juntar los resultados, llamaremos $\delta$ a la menor entre las 2 distancias mínimas.
 
-El problema es que la distancia mínima puede estar en la frontera de los dos sets, por lo que debemos considerar esto.
+El problema es que la distancia mínima puede estar entre un punto en Q y otro en R, por lo que debemos de alguna forma considerar esto.
 
 ![distancia_minima_2.png](imagenes/distancia_minima_2.png)
 
 Llamemos L a la linea vertical que contiene el punto del medio.  
-Si la distancia mínima está entre un punto q y un punto r, su distancia debe ser menor a la distancia mínima de cada uno de los sets.  
-Esto implica que no puede estar a más distancia de la distancia mínima de cada set de la linea L.
+Si la distancia mínima está entre un punto q en Q y un punto r en R, su distancia debe ser menor a $\delta$.  
+Esto implica que en dicho caso, tanto q como r deben estar a una distancia menor a $\delta$ desde la linea L.
 
-Llamemos S a los puntos que están a distancia menor a la distancia mínima de la linea L. Estos puntos podemos encontrarlos en O(n) recorriendo todo el conjunto.  
+Llamemos S a los puntos que están a distancia menor a la $\delta$ de la linea L. Estos puntos podemos encontrarlos en O(n) recorriendo todo el conjunto.  
 Luego, los ordenamos respecto al eje y.
 
 ![distancia_minima_3.png](imagenes/distancia_minima_3.png)
@@ -219,7 +217,7 @@ Para saber si existen puntos a distancia menor a $\delta$ de otro en esta zona, 
 
 ![distancia_minima_4.png](imagenes/distancia_minima_4.png)
 
-Si hacemos esto recorriendo en el orden de $S_y$, tenemos que comparar a lo sumo con 15 celdas siguientes hacia arriba dado que ya se habrían hecho comparaciones con los puntos que se encuentran abajo. En realidad, podemos hacerlo con 7 celdas ya que no es necesario comparar con las celdas que están a más de $\delta$ de distancia, pero vamos a obviar esa parte.
+Si hacemos esto recorriendo en el orden de $S_y$, tenemos que comparar a lo sumo con 15 celdas siguientes hacia arriba(como pueden visualizar en la imagen) dado que ya se habrían hecho comparaciones con los puntos que se encuentran abajo. En realidad, podemos hacerlo con 7 celdas ya que no es necesario comparar con las celdas que están a más de $\delta$ de distancia y tampoco con celdas de un mismo plano, pero vamos a obviar esa parte ya que es engorroso y no mejora la complejidad teórica.
 
 En el peor escenario tenemos 15 comparaciones por cada punto, y por lo tanto combinar el resultado es O(n).
 
