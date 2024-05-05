@@ -6,9 +6,27 @@
 - [Problema de Scheduling](#problema-de-scheduling)
   - [Posibles criterios](#posibles-criterios)
   - [La charla que termina antes](#la-charla-que-termina-antes)
-  - [Implementación](#implementaci%C3%B3n)
+  - [Implementación](#implementación)
   - [Complejidad](#complejidad)
-- [Árboles de Huffman](#arboles-de-huffman)
+- [Árboles de Huffman](#árboles-de-huffman)
+  - [Qué son los códigos](#qué-son-los-códigos)
+  - [Propuesta de Huffman](#propuesta)
+  - [Código prefijo: Árbol binario](#código-prefijo-árbol-binario)
+  - [Algoritmo Greedy](#algoritmo-greedy)
+  - [Implementación](#implementación-huffman)
+  - [Optimalidad](#optimalidad-huffman)
+- [Problema del Cambio](#problema-del-cambio)
+  - [Propuesta greedy](#propuesta-greedy)
+  - [Sistemas canónicos y no canónicos](#sistemas-canónicos-y-no-canónicos)
+- [Problema de compras con inflación](#problema-de-compras-con-inflación)
+- [Problema de la carga de combustible](#problema-de-la-carga-de-combustible)
+- [Problema de la mochila](#problema-de-la-mochila)
+  - [Posibles criterios](#posibles-criterios-1)
+- [Problema del Scheduling II : Minimizando latencia máxima](#problema-del-scheduling-ii--minimizando-latencia-máxima)
+  - [Posibles criterios](#posibles-criterios-2)
+  - [La tarea con menor deadline](#la-tarea-con-menor-deadline)
+  - [Demostración por inducción](#demostración-por-inducción)
+
 
 Algunos algoritmos greedy que ya vimos anteriormente:
 - Dijkstra
@@ -186,6 +204,8 @@ Define a z como padre de x e y.
 
 ![huffman_4](imagenes/huffman_4.png)
 
+<a id='implementación-huffman'></a>
+
 ### Implementación
 
 Utilizaremos un Heap de mínimos, donde el nodo del árbol será el elemento y la frecuencia su clave.
@@ -217,6 +237,8 @@ Retornar Heap.get()
 ```
 
 $T(n) = O(n\ log\ n)$
+
+<a id='optimalidad-huffman'></a>
 
 ### Optimalidad
 
@@ -274,6 +296,130 @@ Sea T' el árbol de códigos prefijos óptimo para C'.
 
 Probaremos que T se puede obtener de T' reemplazando la hoja z por un nodo con hijos a y b, así demostrando que la solución greedy de un subproblema nos lleva a la solución óptima global.
 
+## Problema del Cambio
 
+Se tiene un sistema monetario (ejemplo, el nuestro). Se quiere dar "cambio" de una determinada cantidad de plata. Implementar un algoritmo que devuelva el cambio pedido, usando la mínima cantidad de monedas/billetes.
+
+### Propuesta greedy
+
+Vamos elegiendo el billete/moneda de mayor valor que no supere la cantidad restante.
+
+```pseudo
+Cambio = X
+#Monedas = 0
+Mientras X > 0
+  Seleccionar moneda de mayor valor que no supere X
+  Cantidad = Cambio // moneda
+  Cambio = Cambio - Cantidad * moneda
+  #Monedas = #Monedas + 1
+Retornar #Monedas
+```
+
+Esta solución tiene complejidad $O(c)$, donde n es la cantidad de monedas/billetes en el sistema monetario.
+
+Este algoritmo parece ser óptimo, y lo es en ciertos casos pero no en todos.
+
+### Sistemas canónicos y no canónicos
+
+Si el sistema monetario fuera [1, 5, 6, 9] y quisiéramos dar cambio de 11, el algoritmo greedy nos devolvería 9, 1, 1, mientras que la solución óptima sería 6, 5.
+
+Existen casos en los que el algoritmmo greedy funciona, por ejemplo [1, 5, 10, 25, 50, 100]. A estos sistemas se los llama sistemas canónicos, standard, ordenado o greedy.
+
+No se conoce la respuesta a qué propiedades debe cumplir un sistema monetario para que el algoritmo greedy sea óptimo, pero se sabe cómo determinarlo: en [Optimal Bounds for the ChangeMaking Problem](https://www.cs.cornell.edu/~kozen/Papers/change.pdf) se demuestra que siempre es posible encontrar un contraejemplo en caso de existir entre valores de x que cumplan $c_3 +1 < x < c_n + c_{n-1}$. En [A Polynomial-time Algorithm for the Change-Making Problem](https://ecommons.cornell.edu/handle/1813/6219) se presenta un algoritmo $O(n^3)$ para determinar si un sistema monetario es canónico.
+
+Para resolver este problema, necesitaremos un algoritmo de programación dinámica.
+
+
+## Problema de compras con inflación
+
+Tenemos unos productos dados por un arreglo R, donde $R_i$ es el precio del producto i. Cada día debemos comprar uno y solo uno de los productos. El problema es que vivimos en un país con elevada inflación, por lo que el precio de los productos aumenta cada día.
+
+El precio del producto i en el día j es $R_i^{j+1}$ con j comenzando en 0.
+
+Implementar un algoritmo greedy que nos permita comprar todos los productos de forma tal que minimicemos el costo total.
+
+La solución greedy coincide con el algoritmo más intuitivo: comprar el producto más caro todos los días, ya que éstos aumentan su precio en mayor magnitud que los más baratos.
+
+## Problema de la carga de combustible
+
+Un camión debe viajar desde una ciudad a otra deteniéndose a cargar combustible cuando sea necesario. El tanque de combustible le permite viajar hasta K kilómetros. Las estaciones se encuentran distribuidas a lo largo de la ruta siendo $d_i$ la distancia desde la estación $i-1$ hasta la estación i.
+
+Implementar un algoritmo que decida en qué estaciones debe cargar combustible de manera que se detenga la menor cantidad de veces posible. ¿Cuál es la complejidad algorítmica?
+
+La solución greedy es cargar combustible en la estación más lejana posible, siempre y cuando no se quede sin combustible antes de llegar a la próxima estación. La complejidad algorítmica es $O(n)$. En este caso es también un algoritmo muy intuitivo, pero no es fácil demostrarlo.
+
+**No siempre es fácil demostrar que un algoritmo greedy es óptimo: sin embargo, si es muy difícil encontrar un contraejemplo, es probable que lo sea.**
+
+
+## Problema de la mochila
+
+Tenemos una mochila con una capacidad $V$(volumen). Hay elementos a guardar en la mochila, cada uno con un volumen $volumen_i$ y un valor $valor_i$. Implementar un algoritmo greedy que permita guardar la mayor cantidad de valor en la mochila.
+
+### Posibles criterios
+
+- **Valor:** seleccionar el elemento con mayor valor.
+- **Volumen:** seleccionar el elemento con menor volumen.
+- **Valor por unidad de volumen:** seleccionar el elemento con mayor relación valor/volumen.
+
+Ninguno de los 3 funcionan bajo las condiciones establecidas:
+
+**Seleccionar el elemento con mayor valor:**
+
+Con $W = 10$ y $elementos(valor, volumen) = [(10, 10), (9, 9), (8, 1)]$  
+Nos devuelve [(10, 10)] con un valor total de 10, mientras que la solución óptima es [(9, 9), (8, 1)] con un valor total de 17.
+
+**Seleccionar el elemento con menor volumen:**
+
+Con $W = 10$ y $elementos(valor, volumen) = [(100, 10), (9, 9), (8, 1)]$  
+Nos devuelve [(9, 9), (8, 1)] con un valor total de 17, mientras que la solución óptima es [(100, 10)] con un valor total de 100.
+
+**Seleccionar el elemento con mayor relación valor/volumen:**
+
+Con $W = 10$ y $elementos(valor, volumen) = [(3, 1), (10, 10)]$  
+Nos devuelve [(3,1)] con un valor total de 3, mientras que la solución óptima es [(10, 10)] con un valor total de 10.
+
+El clásico "muy bueno para su precio"... pero si el precio es muy bajo, tal vez la "calidad" también!
+
+### Problema de la mochila fraccionaria
+
+En este caso, se permite fraccionar los elementos. Implementar un algoritmo greedy que permita guardar la mayor cantidad de valor en la mochila.
+
+En este caso es óptimo seleccionar los elementos con mayor relación valor/volumen, ya que si seleccionamos un elemento con menor relación, siempre podremos seleccionar una fracción del elemento con mayor relación que nos permita obtener un mayor valor.
+
+## Problema del Scheduling II : Minimizando latencia máxima
+
+Tenemos tareas con un deadline $d_i$ y una duración $t_i$ que se pueden hacerse en cualquier momento, pero acumulan latencia si no se realizan en el momento en que se deberían. Implementar un algoritmo greedy que permita minimizar la latencia acumulada.
+
+Formalmente, si definimos que una tarea i empiesa en $s_i$, con momento de finalización $f_i = s_i + t_i$, la latencia de la tarea i es $l_i = max(0, f_i - d_i)$.
+
+### Posibles criterios
+
+- **La que dura menos:** seleccionar la tarea con menor $t_i$.
+- **La que dura más:** seleccionar la tarea con mayor $t_i$.
+- **La que queda menos para poder hacerla en tiempo:** seleccionar la tarea con menor $d_i-t_i$.
+
+**La que dura menos:**
+Con $tareas(d_i, t_i) = [(12, 2), (10, 10)]$
+Haríamos la tarea 1 primero y la tarea 2 después, acumulando una latencia de 2, mientras que si hacemos la tarea 2 primero y la tarea 1 después, acumulamos una latencia de 0.
+
+**La que dura más:**
+Con $tareas(d_i, t_i) = [(110, 100), (12, 10)]$
+Haríamos la tarea 1 primero y la tarea 2 después, acumulando una latencia de 98, mientras que si hacemos la tarea 2 primero y la tarea 1 después, acumulamos una latencia de 0.
+
+**La que queda menos para poder hacerla en tiempo:**
+Con $tareas(d_i, t_i) = [(2, 1), (10, 10)]$  
+Haríamos la tarea 2 primero y la tarea 1 después, acumulando una latencia de 9, mientras que si hacemos la tarea 1 primero y la tarea 2 después, acumulamos una latencia de 1.
+
+### La tarea con menor deadline
+
+Puede sonar antiintuitivo ya que no tiene en cuenta el deadline, pero pensemos: sea el orden en que hagamos las tareas, el tiempo que nos lleva hacer todas las tareas es el mismo. Lo importante es completar primero las tareas que tienen menor deadline y no sumar deadline de esas tareas.
+
+### Demostración por inducción
+
+Formalmente hablando, la latencia máxima que puede acumular al hacer $tarea_i$ antes que $tarea_i+1$, ordenados en orden creciente de deadline, es $max(0, t_i + t_{i+1} - f_{i+1})$. Si hacemos la $tarea_i+1$ antes que la $tarea_i$, la latencia máxima que acumularíamos sería $max(0, t_i + t_{i+1} - f_i)$.
+
+Como $f_i \leq f_{i+1}$, entonces $max(0, t_i + t_{i+1} - f_{i+1}) \leq max(0, t_i + t_{i+1} - f_i)$. Es decir, acumula menos latencia si hacemos la tarea con menor deadline primero. Esto es cierto para todo par de $(tarea_i, tarea_j)$ con $i < j$.
+
+Ahora, supongamos que elegimos una $tarea_{i-1}$ en base a lo dicho. La inecuación sigue siendo válida ya que sólo tendríamos que agregar $f_{i-1}$ en ambos términos; utilizar este criterio minimiza la latencia total en cada paso, sin importar lo que se haya elegido anteriormente, llevándonos a la solución óptima.
 
 

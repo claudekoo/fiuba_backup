@@ -87,8 +87,10 @@ $f(n) = O(n^C)$, $C < log_B A$ entonces $T(n) = ϴ(n^{log_B A})$
 $f(n) = ϴ(n^Clog^k n)$, $C = log_B A$ entonces $T(n) = ϴ(n^C log^{k+1} n)$  
 $f(n) = Ω(n^C)$, $C > log_B A$, $Af(n/B)\leq kf(n)(con k < 1, n\ grande)$ entonces $T(n) = ϴ(f(n))$
 
-Nota: ϴ es una notación que indica que la función está acotada por una constante multiplicativa. Es decir, la función es igual a otra multiplicada por una constante.  
-Nota: Ω es una notación que indica que la función acota a otra por una constante multiplicativa. Es decir, la función es mayor a otra multiplicada por una constante.
+**Notas:**  
+$O$ es una notación que indica que la función acota superiormente a otra función. Es decir, la función es mayor o igual a otra multiplicada por una constante.  
+$ϴ$ es una notación que indica que la función está acotada por una constante multiplicativa. Es decir, la función es igual a otra multiplicada por una constante.  
+$Ω$ es una notación que indica que la función acota inferiormente a otra función. Es decir, la función es menor o igual a otra multiplicada por una constante.
 
 #### Ejemplo
 
@@ -96,11 +98,11 @@ $T(n) = 2T(n/2) + log\ n$
 
 $log_B A = 1$
 
-1° caso → $f(n) = O(n)$ → $C = log_B A$ → No aplica  
-2° caso → $f(n) = ϴ(n^0log^1n)$, $C = 0 \neq log_B A$ → No aplica  
-3° caso → $f(n) = Ω(1)$ → $C = 0 < log_B A$ → No aplica  
+1° caso → $f(n) = O(n)$ → $C = log_B A$ → No aplica, tiene que ser menor.  
+2° caso → $f(n) = ϴ(n^0log^1n)$, $C = 0 \neq log_B A$ → No aplica.  
+3° caso → $f(n) = Ω(1)$ → $C = 0 < log_B A$ → No aplica, tiene que ser mayor.  
 ¿Cagamos?  
-No!  
+No! En ningún lado piden que C sea entero, por lo que podemos acotar el logaritmo:  
 1° caso → $f(c) = O(n^{0,1})$ → $C < log_B A$ → $T(n) = ϴ(n)$ 
 
 ## Ejercicios más avanzados
@@ -163,7 +165,8 @@ La solución obvia es hacerlo por fuerza bruta, recorriendo todos los vértices 
 
 Si sabemos que el polígono es convexo, es decir, todos sus ángulos interiores son menores a 180°, podemos hacerlo por D&C.
 
-Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico'; esto lo pueden observar en la siguiente imagen recorriendo los vértices del polígono en sentido antihorario(con i incremental) y observando su proyección sobre la recta u.  
+Supongamos que el máximo está entre $v_i$ y $v_{i+1}$, incluyendo a todos los vértices entre ellos. Este es nuestro caso inicial. Si lo pensamos bien, esto corresponde a buscar el máximo en un arreglo circular con un 'pico', del siguiente estilo: [3, 6, 8, 10, 5, 2] siendo 10 el pico.  
+Esto lo pueden observar en la siguiente imagen recorriendo los vértices del polígono en sentido antihorario(con i incremental) y observando su proyección sobre la recta u.  
 Esta propiedad se da debido a que el polígono es convexo, y el 'sentido' respecto el eje u sólo cambia cuando se llega a un vértice extremo.
 
 ![Extremo_poligono_2.png](imagenes/extremo_poligono_2.png)
