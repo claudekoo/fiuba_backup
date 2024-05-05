@@ -26,7 +26,8 @@
   - [Posibles criterios](#posibles-criterios-2)
   - [La tarea con menor deadline](#la-tarea-con-menor-deadline)
   - [Demostración por inducción](#demostración-por-inducción)
-
+- [Problema de Optimal Caching](#problema-de-optimal-caching)
+- [Problema de botes y faros](#problema-de-botes-y-faros)
 
 Algunos algoritmos greedy que ya vimos anteriormente:
 - Dijkstra
