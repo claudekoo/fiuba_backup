@@ -423,3 +423,28 @@ Como $f_i \leq f_{i+1}$, entonces $max(0, t_i + t_{i+1} - f_{i+1}) \leq max(0, t
 Ahora, supongamos que elegimos una $tarea_{i-1}$ en base a lo dicho. La inecuación sigue siendo válida ya que sólo tendríamos que agregar $f_{i-1}$ en ambos términos; utilizar este criterio minimiza la latencia total en cada paso, sin importar lo que se haya elegido anteriormente, llevándonos a la solución óptima.
 
 
+## Problema de Optimal Caching
+
+Podemos tener hasta k elementos a mano(en la memoria caché), para acceder al resto hay que recurrir a la RAM.
+
+Tenemos un conjunto de datos U en memoria general (n en total), una memoria caché de k < n elementos. Tenemos una secuencia de pedidos de datos $d_i$. Si $d_i$ está en la caché, podemos acceder a éste directamente. Si no está se produce un cache miss y debemos traerlo de la memoria general a la caché, evictando un elemento si la caché está llena. Queremos minimizar la cantidad de cache misses.
+
+¿Qué es lo que hay que definir? Los primeros k elementos únicos producirán cache misses empezando con caché vacía. Lo que hay que definir es qué elemento se debe sacar una vez llena la caché con esos k elementos.
+
+Intuitivamente, la solución greedy óptima es sacar el elemento que no se va a pedir en el futuro más cercano; de esta forma habremos evitado un cache miss desde el momento hasta el próximo pedido de ese elemento. Que, al haber elegido otro elemento, se podría haber producido antes por evictar un elemento que se iba a pedir en el futuro cercano.
+
+### Qué pasa si no conocemos la secuencia de pedidos
+
+En este caso, ante la incerteza respecto a qué elemento se pedirá en el futuro, no es posible determinar un algoritmo óptimo. La heurística greedy preferida es la de Least Recently Used (LRU), que consiste en sacar el elemento que no se pidió hace más tiempo.
+
+## Problema de botes y faros
+
+Se tiene inicialmente una matriz donde en cada celda hay un bote, o no, y se quiere poner faros para iluminarlos todos. Los faros iluminan su celda y todas las adyacentes, incluyendo las diagonales, y las directamente adyacentes a éstas. Implementar un algoritmo greedy que permita poner la menor cantidad de faros posibles.
+
+El algoritmo greedy más intuitivo es poner un faro en la celda que ilumina la mayor cantidad de botes no iluminadas, e ir repitiendo el proceso hasta que todos los botes estén iluminados. Sin embargo, este algoritmo no es óptimo:
+
+![botes_faros](imagenes/botes_faros.png)
+
+En el caso de la imagen, el algoritmo greedy pondría un faro en la celda central, y luego uno para cada bote ubicado en las esquinas, totalizando 5 faros. La solución óptima es poner un faro en el centro cada cuadrante, iluminando todos los botes con 4 faros.
+
+En realidad, para este problema no existe una solución greedy óptima, y debemos recurrir al siguiente tema: **programación dinámica**.
