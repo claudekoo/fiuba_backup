@@ -1,0 +1,3 @@
+[submodule "teoria_de_algoritmos"]
+	path = teoria_de_algoritmos
+	url = https://github.com/claudekoo/teoria_de_algoritmos
