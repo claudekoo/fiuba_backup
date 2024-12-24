@@ -1,7 +1,11 @@
-[submodule "teoria_de_algoritmos"]
-	path = teoria_de_algoritmos
-	url = https://github.com/claudekoo/teoria_de_algoritmos
-
 [submodule "sistemas_operativos"]
 	path = sistemas_operativos
 	url = https://github.com/claudekoo/sistemas_operativos
+
+[submodule "ciencia_de_datos"]
+	path = ciencia_de_datos
+	url = https://github.com/claudekoo/ciencia_de_datos
+
+[submodule "teoria_de_algoritmos"]
+	path = teoria_de_algoritmos
+	url = https://github.com/claudekoo/teoria_de_algoritmos
