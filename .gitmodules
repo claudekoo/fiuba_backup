@@ -1,11 +1,14 @@
 [submodule "sistemas_operativos"]
 	path = sistemas_operativos
 	url = https://github.com/claudekoo/sistemas_operativos
+	branch = master
 
 [submodule "ciencia_de_datos"]
 	path = ciencia_de_datos
 	url = https://github.com/claudekoo/ciencia_de_datos
+	branch = master
 
 [submodule "teoria_de_algoritmos"]
 	path = teoria_de_algoritmos
 	url = https://github.com/claudekoo/teoria_de_algoritmos
+	branch = master
